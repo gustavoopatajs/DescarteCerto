@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav {
+      background-color:#1B5E20;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+ 
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+        .logo-text {
+      color:#FFFFFF ;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+ 
+    .logo-text span {
+      display: block;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
+    }
+ 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+ 
+    .nav-links a {
+      color:#FFFFFF;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+ 
+    .nav-links a:hover { opacity: 0.75; }
+ 
+    .btn-cadastrar {
+      background: #F9A825;
+      color: black;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+ 
+    .btn-cadastrar:hover {
+      background: #F9A825;
+      transform: scale(1.03);
+    }
+  main {
+      background-color: #2e7d32;
+      padding: 60px 40px;
+    }
+ 
+ 
+  
+    .badge {
+      display: inline-block;        
+      background-color: #f9a825;
+      opacity: 60%;  
+      color: #000000;              
+      padding: 2vh, 5vw;          
+      border-radius: 999px;        
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+ 
+    .hero h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+ 
+    .hero p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 480px;
+    }
+ 
+    .btn-principal {
+      display: inline-block;
+      background-color: #f9a825;
+      color: #4e2a00;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+ 
+    .btn-principal:hover {
+      background-color: #e65100;
+      color: white;
+    }
