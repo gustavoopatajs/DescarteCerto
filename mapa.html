@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa e Catadores - Descarte Certo</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+/* CONTAINER */
+.coleta,
+.catadores{
+    max-width:1200px;
+    margin:auto;
+    padding:50px;
+}
+
+.coleta h1,
+.catadores h2{
+    color:#1B5E20;
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.coleta p,
+.catadores p{
+    color:#777;
+    margin-bottom:20px;
+}
+
+/* MAPA */
+.mapa{
+    height:180px;
+    background:#d8ead8;
+    border:1px solid #9ac39a;
+    border-radius:12px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#2e7d32;
+    font-weight:bold;
+}
+
+/* CATADORES */
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.card{
+    width:250px;
+    background:white;
+    border:1px solid #ccc;
+    border-radius:12px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.destaque{
+    border:2px solid #1e88ff;
+}
+
+.avatar{
+    width:60px;
+    height:60px;
+    background:#1B5E20;
+    color:white;
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:0 auto 20px;
+
+    font-size:24px;
+    font-weight:bold;
+}
+
+.avatar.claro{
+    background:#c8e6c9;
+    color:white;
+}
+
+.card h3{
+    color:#2e7d32;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#777;
+    margin-bottom:12px;
+}
+
+.tag{
+    display:inline-block;
+    background:#d8ead8;
+    color:#2e7d32;
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:12px;
+}
+
+/* FOOTER */
+footer{
+    background:#1B5E20;
+    color:white;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 50px;
+    margin-top:50px;
+}
+
+footer img{
+    height:40px;
+}
+
+footer p{
+    font-size:14px;
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+}
+
+.footer-links a{
+    color:white;
+    text-decoration:none;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<section class="coleta">
+
+<h1>Pontos de coleta perto de você</h1>
+<p>São Paulo - SP</p>
+
+<div class="mapa">
+Mapa interativo — integração via App Inventor / Google Maps
+</div>
+
+</section>
+
+<section id="catadores" class="catadores">
+
+<h2>Catadores em destaque</h2>
+
+<p>Conheça quem faz a diferença na sua cidade</p>
+
+<div class="cards">
+
+<div class="card">
+<div class="avatar">M</div>
+<h3>Maria Silva</h3>
+<p>Vila Madalena, SP</p>
+<span>Cooperativa Recicla+</span>
+</div>
+
+<div class="card destaque">
+<div class="avatar">J</div>
+<h3>João Santos</h3>
+<p>Pinheiros, SP</p>
+<span>Cooperativa Recicla+</span>
+</div>
+
+<div class="card">
+<div class="avatar claro">A</div>
+<h3>Ana Ferreira</h3>
+<p>Lapa, SP</p>
+<span>Cooperativa Recicla+</span>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<img src="assets/logoFundo-escuro.png">
+
+<p>FMU 2026 • Projeto ADS • Sustentabilidade e Inclusão</p>
+
+<div>
+<a href="#">Sobre</a>
+<a href="#">Contato</a>
+<a href="#">Privacidade</a>
+</div>
+
+</footer>
+
+</body>
+</html>

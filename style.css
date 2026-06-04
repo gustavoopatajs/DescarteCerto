@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    min-height: 100vh;
+}
 nav {
       background-color:#1B5E20;
       padding: 0 48px;
@@ -65,27 +68,29 @@ nav {
       background: #F9A825;
       transform: scale(1.03);
     }
-  main {
-      background-color: #2e7d32;
-      padding: 60px 40px;
-    }
- 
- 
+main {
+    background-color: #2e7d32;
+    padding: 60px 40px;
+    min-height: calc(100vh - 72px - 120px);
+     display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
   
-    .badge {
+.badge {
       display: inline-block;        
       background-color: #f9a825;
       opacity: 60%;  
       color: #000000;              
-      padding: 2vh, 5vw;          
+      padding: 8px 20px;;          
       border-radius: 999px;        
-      font-size: 13px;
+      font-size: 16px;
       font-weight: bold;
       margin-bottom: 20px;
     }
  
     .hero h1 {
-      font-size: 48px;
+      font-size: 72px;
       font-weight: bold;
       color: white;
       line-height: 1.2;
@@ -93,7 +98,7 @@ nav {
     }
  
     .hero p {
-      font-size: 16px;
+      font-size: 22px;
       color: rgba(255, 255, 255, 0.8);
       line-height: 1.6;
       margin-bottom: 28px;
@@ -106,7 +111,7 @@ nav {
       color: #4e2a00;
       padding: 12px 24px;
       border-radius: 999px;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: bold;
       text-decoration: none;
     }
@@ -115,3 +120,32 @@ nav {
       background-color: #e65100;
       color: white;
     }
+    .footer-stats {
+    background-color: #0d5d18;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    width: 100%;
+}
+
+.stat {
+    flex: 1;
+    text-align: center;
+    color: white;
+}
+
+.stat:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.stat h2 {
+    color: #ffb52e;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat p {
+    font-size: 18px;
+}
