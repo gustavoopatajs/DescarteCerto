@@ -12,8 +12,34 @@
     font-family:Arial,sans-serif;
 }
 
+[hidden]{ display:none !important; }
+
 body{
     background:#f5f5f5;
+}
+
+/* BARRA DE USUÁRIO (NOVO) */
+.topo{
+    background:#1B5E20;
+    color:white;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:15px;
+    padding:10px 50px;
+    font-size:14px;
+}
+
+.topo a{ color:white; }
+
+.topo button{
+    background:white;
+    color:#1B5E20;
+    border:none;
+    padding:6px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
 /* CONTAINER */
@@ -37,9 +63,43 @@ body{
     margin-bottom:20px;
 }
 
+/* BUSCA (NOVO) */
+.busca{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:15px;
+}
+
+.busca input,
+.busca select,
+.form-ponto input,
+.form-ponto select{
+    padding:10px 14px;
+    border:1px solid #9ac39a;
+    border-radius:8px;
+    font-size:14px;
+    background:white;
+}
+
+.busca input{ flex:1; min-width:200px; }
+
+.btn{
+    background:#2e7d32;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.btn:hover{ background:#1B5E20; }
+.btn.sec{ background:#d8ead8; color:#2e7d32; }
+
 /* MAPA */
 .mapa{
-    height:180px;
+    height:420px;
     background:#d8ead8;
     border:1px solid #9ac39a;
     border-radius:12px;
@@ -50,6 +110,69 @@ body{
 
     color:#2e7d32;
     font-weight:bold;
+}
+
+/* LISTA DE PONTOS (NOVO) */
+#lista-pontos{
+    list-style:none;
+    margin-top:20px;
+    display:grid;
+    gap:12px;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+}
+
+#lista-pontos li{
+    background:white;
+    border:1px solid #ccc;
+    border-radius:12px;
+    padding:16px;
+    color:#555;
+    font-size:14px;
+    line-height:1.5;
+}
+
+#lista-pontos li strong{ color:#2e7d32; }
+
+#lista-pontos li button{
+    margin-top:10px;
+    background:#d8ead8;
+    color:#2e7d32;
+    border:none;
+    padding:5px 12px;
+    border-radius:999px;
+    cursor:pointer;
+}
+
+/* FORMULÁRIO DE PONTOS (NOVO) */
+.form-ponto{
+    background:white;
+    border:1px solid #ccc;
+    border-radius:12px;
+    padding:25px;
+    margin-top:30px;
+}
+
+.form-ponto h3{
+    color:#2e7d32;
+    margin-bottom:15px;
+}
+
+.form-ponto .linha{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+}
+
+.form-ponto input,
+.form-ponto select{ flex:1; min-width:160px; }
+
+.aviso{
+    margin-top:30px;
+    background:#d8ead8;
+    color:#2e7d32;
+    padding:15px 20px;
+    border-radius:12px;
 }
 
 /* CATADORES */
@@ -154,19 +277,81 @@ footer p{
 .footer-links a:hover{
     text-decoration:underline;
 }
+
+@media (max-width:700px){
+    .coleta,.catadores{ padding:25px; }
+    .topo{ padding:10px 25px; }
+    footer{ flex-direction:column; gap:15px; text-align:center; padding:20px 25px; }
+}
 </style>
 </head>
 
 <body>
+
+<!-- BARRA DE USUÁRIO -->
+<div class="topo">
+    <a href="login.html" data-auth="visitante">Entrar</a>
+    <a href="signup.html" data-auth="visitante">Cadastrar</a>
+    <span data-auth="logado" hidden>Olá, <span id="nome-usuario"></span></span>
+    <button id="btn-sair" data-auth="logado" hidden>Sair</button>
+</div>
 
 <section class="coleta">
 
 <h1>Pontos de coleta perto de você</h1>
 <p>São Paulo - SP</p>
 
-<div class="mapa">
-Mapa interativo — integração via App Inventor / Google Maps
+<!-- BUSCA -->
+<div class="busca">
+    <input id="busca-texto" type="search" placeholder="Buscar por nome ou endereço">
+    <select id="busca-tipo">
+        <option value="">Todos os tipos</option>
+        <option>Eletrônicos</option>
+        <option>Pilhas e baterias</option>
+        <option>Óleo de cozinha</option>
+        <option>Vidro</option>
+        <option>Papel</option>
+        <option>Plástico</option>
+    </select>
+    <button type="button" id="btn-localizacao" class="btn">Perto de mim</button>
 </div>
+
+<!-- O mapa do Google é desenhado aqui -->
+<div id="map" class="mapa">
+Carregando mapa...
+</div>
+
+<ul id="lista-pontos"></ul>
+
+<!-- CADASTRO DE PONTOS: só para usuário logado -->
+<form id="form-ponto" class="form-ponto" data-auth="logado" hidden>
+    <h3>Cadastrar / editar ponto de coleta</h3>
+    <input type="hidden" id="ponto-id">
+    <div class="linha">
+        <input id="ponto-nome" placeholder="Nome do ponto" required>
+        <select id="ponto-tipo">
+            <option>Eletrônicos</option>
+            <option>Pilhas e baterias</option>
+            <option>Óleo de cozinha</option>
+            <option>Vidro</option>
+            <option>Papel</option>
+            <option>Plástico</option>
+        </select>
+    </div>
+    <div class="linha">
+        <input id="ponto-endereco" placeholder="Endereço (ex.: Av. Paulista, 1000, São Paulo)">
+    </div>
+    <div class="linha">
+        <input id="ponto-lat" placeholder="Latitude (ou clique no mapa)">
+        <input id="ponto-lng" placeholder="Longitude (ou clique no mapa)">
+    </div>
+    <button type="submit" class="btn">Salvar</button>
+    <button type="button" id="btn-cancelar" class="btn sec">Cancelar</button>
+</form>
+
+<p class="aviso" data-auth="visitante">
+    <a href="login.html">Entre</a> ou <a href="signup.html">cadastre-se</a> para adicionar e editar pontos de coleta.
+</p>
 
 </section>
 
@@ -205,17 +390,23 @@ Mapa interativo — integração via App Inventor / Google Maps
 
 <footer>
 
-<img src="assets/logoFundo-escuro.png">
+<img src="assets/logoFundo-escuro.png" alt="Descarte Certo">
 
 <p>FMU 2026 • Projeto ADS • Sustentabilidade e Inclusão</p>
 
-<div>
+<div class="footer-links">
 <a href="#">Sobre</a>
 <a href="#">Contato</a>
 <a href="#">Privacidade</a>
 </div>
 
 </footer>
+
+<!-- SCRIPTS: auth.js antes do mapa.js -->
+<script src="auth.js"></script>
+<script src="mapa.js"></script>
+<!-- Troque SUA_CHAVE pela chave da API do Google Maps -->
+<script async src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE&callback=initMap"></script>
 
 </body>
 </html>
